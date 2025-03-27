@@ -18,7 +18,7 @@ jobs:
 
     - name: Trigger Consumer Workflow
       env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: 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
       run: |
         curl -X POST \
         -H "Authorization: token $GITHUB_TOKEN" \
