@@ -19,7 +19,8 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '17'  # or the version your project uses
+        java-version: '17'
+        distribution: 'temurin'
 
     - name: Generate Stubs
       run: |
