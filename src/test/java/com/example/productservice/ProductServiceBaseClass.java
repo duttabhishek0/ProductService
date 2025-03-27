@@ -32,7 +32,7 @@ public abstract class ProductServiceBaseClass {
         Mockito.when(productService.getProductById(1L))
                 .thenReturn(
                         Optional.of(new Product(
-                                1L,
+                                1,
                                 "The Great Gatsby",
                                 "A classic novel written by F. Scott Fitzgerald.",
                                 10.99,

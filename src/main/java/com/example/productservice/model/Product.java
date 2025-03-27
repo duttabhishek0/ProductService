@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
     public class Product {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private int id;
         private String name;
         private String description;
         private Double price;
@@ -29,7 +29,7 @@ import jakarta.persistence.Id;
         }
 
 
-        public Product(Long orderId, String name, String description, Double price, Boolean available) {
+        public Product(int orderId, String name, String description, Double price, Boolean available) {
             this.id = orderId;
             this.name = name;
             this.description = description;
@@ -38,11 +38,11 @@ import jakarta.persistence.Id;
         }
 
         // Getters and Setters
-        public Long getId() {
+        public int getId() {
             return id;
         }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
