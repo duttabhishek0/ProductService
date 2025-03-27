@@ -26,10 +26,3 @@ jobs:
       run: |
         mvn clean install
         echo "Stubs generated using Spring Cloud Contract."
-
-    - name: Archive Surefire Reports
-      if: failure()
-      uses: actions/upload-artifact@v3
-      with:
-        name: surefire-reports
-        path: target/surefire-report
