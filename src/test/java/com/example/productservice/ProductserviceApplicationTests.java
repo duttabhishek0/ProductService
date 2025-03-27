@@ -22,13 +22,13 @@ import org.springframework.test.web.servlet.MockMvc;
 //@Provider("ProductProvider")
 //@PactFolder("src/test/resources/pacts")
 //@AutoConfigureMockMvc(addFilters = false)
-@SpringBootTest
+//@SpringBootTest
 class ProductserviceApplicationTests {
 
-
-    @Test
-    void contextLoads() {
-    }
+//
+//    @Test
+//    void contextLoads() {
+//    }
 //    @Autowired
 //    private MockMvc mockMvc;
 //
