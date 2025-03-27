@@ -1,0 +1,27 @@
+name: Producer Stub Generation
+
+on:
+  push:
+    branches:
+      - main  # or the branch you want to monitor
+  pull_request:
+    branches:
+      - main  # or the branch you want to monitor
+
+jobs:
+  generate-stubs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'  # or the version your project uses
+
+    - name: Generate Stubs
+      run: |
+        mvn clean install
+        echo "Stubs generated using Spring Cloud Contract."
