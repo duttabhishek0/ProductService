@@ -83,8 +83,8 @@ out/
 /target/stubs
 /target/surefire-reports
 /target/test-classes
-/target/productservice-0.0.1-SNAPSHOT.jar.original
-/target/productservice-0.0.1-SNAPSHOT.jar
+/target/productservice-0.0.1-SNAPSHOT.jar.original/
+/target/productservice-0.0.1-SNAPSHOT.jar/
 
 
 
