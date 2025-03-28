@@ -61,7 +61,7 @@ jobs:
           git init
           git config --global user.email "duttabhishek0@gmail.com"
           git config --global user.name "Abhishek Dutt"
-          git remote add origin https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/duttabhishek0/Stubs.git
+          git remote add origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/duttabhishek0/Stubs.git
           git checkout -b $BRANCH_NAME
           git add .
           git commit -m "Upload stubs"
@@ -70,7 +70,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          token: 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
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           repository: duttabhishek0/Stubs
           branch: stubs-branch
           title: "Automated Stubs Update"
@@ -78,7 +78,7 @@ jobs:
 
       - name: Trigger Consumer Workflow
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           curl -X POST \
           -H "Authorization: token $GITHUB_TOKEN" \
