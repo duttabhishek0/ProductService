@@ -67,18 +67,9 @@ jobs:
           git commit -m "Upload stubs"
           git push -u origin $BRANCH_NAME --force
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          repository: duttabhishek0/Stubs
-          branch: stubs-branch
-          title: "Automated Stubs Update"
-          body: "This PR contains the latest stubs."
-
       - name: Trigger Consumer Workflow
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: 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
         run: |
           curl -X POST \
           -H "Authorization: token $GITHUB_TOKEN" \
