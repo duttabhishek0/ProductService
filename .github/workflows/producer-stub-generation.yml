@@ -16,49 +16,48 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-<<<<<<< HEAD
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
 
-      - name: Generate Stubs
-        run: mvn clean install
+    - name: Generate Stubs
+      run: mvn clean install
 
-      - name: Upload Stubs to Another Repo
-        env:
-          REPO_URL: https://github.com/duttabhishek0/Stubs.git
-          BRANCH_NAME: stubs-branch
-        run: |
-          mkdir -p stubs
-          cp target/stubs/*.jar stubs/  # Adjust path if using Gradle
-          cd stubs
-          git init
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git remote add origin $REPO_URL
-          git checkout -b $BRANCH_NAME
-          git add .
-          git commit -m "Upload stubs"
-          git push -u origin $BRANCH_NAME --force
+    - name: Upload Stubs to Another Repo
+      env:
+        REPO_URL: https://github.com/duttabhishek0/Stubs.git
+        BRANCH_NAME: stubs-branch
+      run: |
+        mkdir -p stubs
+        cp target/stubs/*.jar stubs/  # Adjust path if using Gradle
+        cd stubs
+        git init
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git remote add origin $REPO_URL
+        git checkout -b $BRANCH_NAME
+        git add .
+        git commit -m "Upload stubs"
+        git push -u origin $BRANCH_NAME --force
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: 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
-          path: duttabhishek0/Stubs
-          branch: stubs-branch
-          title: "Automated Stubs Update"
-          body: "This PR contains the latest stubs."
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: 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
+        path: duttabhishek0/Stubs
+        branch: stubs-branch
+        title: "Automated Stubs Update"
+        body: "This PR contains the latest stubs."
 
-      - name: Trigger Consumer Workflow
-        env:
-          GITHUB_TOKEN: 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
-        run: |
-          curl -X POST \
-          -H "Authorization: token $GITHUB_TOKEN" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          https://api.github.com/repos/duttabhishek0/Consumer/dispatches \
-          -d '{"event_type": "trigger-consumer-workflow"}'
-  
+    - name: Trigger Consumer Workflow
+      env:
+        GITHUB_TOKEN: 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
+      run: |
+        curl -X POST \
+        -H "Authorization: token $GITHUB_TOKEN" \
+        -H "Accept: application/vnd.github.everest-preview+json" \
+        https://api.github.com/repos/duttabhishek0/Consumer/dispatches \
+        -d '{"event_type": "trigger-consumer-workflow"}'
+
