@@ -55,11 +55,11 @@ jobs:
           BRANCH_NAME: stubs-branch
         run: |
           mkdir -p stubs
-          cp target/stubs/*.jar stubs/  # Adjust path if using Gradle
+          cp target/*.jar stubs/  # Adjust path if using Gradle
           cd stubs
           git init
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "duttabhishek0@gmail.com"
+          git config --global user.name "Abhishek Dutt"
           git remote add origin $REPO_URL
           git checkout -b $BRANCH_NAME
           git add .
