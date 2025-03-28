@@ -71,8 +71,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: duttabhishek0/Stubs
-          branch: main
+          repository: duttabhishek0/Stubs
+          branch: stubs-branch
           title: "Automated Stubs Update"
           body: "This PR contains the latest stubs."
 
