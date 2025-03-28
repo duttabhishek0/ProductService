@@ -1,4 +1,4 @@
-name: Producer Stub Generation
+name: Trigger Consumer Workflow
 
 on:
   push:
@@ -9,38 +9,14 @@ on:
       - main
 
 jobs:
-  generate-stubs:
+  trigger-consumer:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: admin
-          MYSQL_DATABASE: test_db
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
-    env:
-      # Application properties
-      SPRING_APPLICATION_NAME: productservice
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/test_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: admin
-      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
-      SPRING_MAIN_WEB_APPLICATION_TYPE: none
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_SHOW_SQL: "true"
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQLDialect
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
+<<<<<<< HEAD
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -75,3 +51,14 @@ jobs:
           branch: stubs-branch
           title: "Automated Stubs Update"
           body: "This PR contains the latest stubs."
+
+      - name: Trigger Consumer Workflow
+        env:
+          GITHUB_TOKEN: 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
+        run: |
+          curl -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          https://api.github.com/repos/duttabhishek0/Consumer/dispatches \
+          -d '{"event_type": "trigger-consumer-workflow"}'
+  
