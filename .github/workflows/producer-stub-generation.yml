@@ -53,6 +53,7 @@ jobs:
         env:
           REPO_URL: https://github.com/duttabhishek0/Stubs.git
           BRANCH_NAME: stubs-branch
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           mkdir -p stubs
           cp target/*.jar stubs/  # Adjust path if using Gradle
@@ -60,7 +61,7 @@ jobs:
           git init
           git config --global user.email "duttabhishek0@gmail.com"
           git config --global user.name "Abhishek Dutt"
-          git remote add origin $REPO_URL
+          git remote add origin https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/duttabhishek0/Stubs.git
           git checkout -b $BRANCH_NAME
           git add .
           git commit -m "Upload stubs"
@@ -69,19 +70,18 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          token: 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
-          path: duttabhishek0/Stubs
+          token: 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
+          repository: duttabhishek0/Stubs
           branch: stubs-branch
           title: "Automated Stubs Update"
           body: "This PR contains the latest stubs."
 
       - name: Trigger Consumer Workflow
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: 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
         run: |
           curl -X POST \
           -H "Authorization: token $GITHUB_TOKEN" \
           -H "Accept: application/vnd.github.everest-preview+json" \
           https://api.github.com/repos/duttabhishek0/Consumer/dispatches \
           -d '{"event_type": "trigger-consumer-workflow"}'
-
