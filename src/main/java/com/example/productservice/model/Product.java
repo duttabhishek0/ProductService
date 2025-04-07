@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
     public class Product {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+        private int locNo;
         private String name;
         private String description;
         private Double price;
@@ -30,7 +30,7 @@ import jakarta.persistence.Id;
 
 
         public Product(int orderId, String name, String description, Double price, Boolean available) {
-            this.id = orderId;
+            this.locNo = orderId;
             this.name = name;
             this.description = description;
             this.price = price;
@@ -39,11 +39,11 @@ import jakarta.persistence.Id;
 
         // Getters and Setters
         public int getId() {
-            return id;
+            return locNo;
         }
 
     public void setId(int id) {
-        this.id = id;
+        this.locNo = id;
     }
 
     public String getName() {
@@ -82,7 +82,7 @@ import jakarta.persistence.Id;
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "locNo=" + locNo +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

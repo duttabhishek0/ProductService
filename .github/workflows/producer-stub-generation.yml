@@ -56,7 +56,7 @@ jobs:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           mkdir -p stubs
-          cp -r target/stubs/* temp-stubs/  # Adjust path if using Gradle
+          cp -r target/stubs temp-stubs/  # Adjust path if using Gradle
           cd temp-stubs
           git init
           git config --global user.email "duttabhishek0@gmail.com"
