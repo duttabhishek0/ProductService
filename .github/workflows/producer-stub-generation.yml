@@ -51,17 +51,17 @@ jobs:
 
       - name: Upload Stubs to Another Repo
         env:
-          REPO_URL: https://github.com/duttabhishek0/Stubs.git
-          BRANCH_NAME: stubs-branch
+          REPO_URL: https://github.com/duttabhishek0/temp-stubs.git
+          BRANCH_NAME: main
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           mkdir -p stubs
-          cp target/*.jar stubs/  # Adjust path if using Gradle
-          cd stubs
+          cp -r target/stubs/* temp-stubs/  # Adjust path if using Gradle
+          cd temp-stubs
           git init
           git config --global user.email "duttabhishek0@gmail.com"
           git config --global user.name "Abhishek Dutt"
-          git remote add origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/duttabhishek0/Stubs.git
+          git remote add origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/duttabhishek0/temp-stubs.git
           git checkout -b $BRANCH_NAME
           git add .
           git commit -m "Upload stubs"

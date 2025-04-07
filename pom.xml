@@ -94,8 +94,15 @@
 				<extensions>true</extensions>
 				<configuration>
 					<baseClassForTests>com.example.productservice.ProductServiceBaseClass</baseClassForTests>
-
 				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>pushStubsToScm</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
