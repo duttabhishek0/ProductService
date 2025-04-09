@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getProductById(@PathVariable Long id) {
+    public ResponseEntity<Object> getProductById(@PathVariable int id) {
         Optional<Product> product = productService.getProductById(id);
         if (product.isPresent()) {
             return ResponseEntity.ok(product.get());
@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }
