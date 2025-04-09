@@ -20,7 +20,7 @@ Contract.make {
                 "available": true,
                 "description": "A classic novel written by F. Scott Fitzgerald.",
                 "id": 1,
-                "name": "The Great Gatsby",
+                "name": "Sample Name",
                 "price": 10.99
         )
     }

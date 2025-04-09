@@ -33,7 +33,7 @@ public abstract class ProductServiceBaseClass {
                 .thenReturn(
                         Optional.of(new Product(
                                 1,
-                                "The Great Gatsby",
+                                "Sample Name",
                                 "A classic novel written by F. Scott Fitzgerald.",
                                 10.99,
                                 true
